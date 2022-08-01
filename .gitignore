@@ -1,0 +1,31 @@
+# project specific files
+Notes.md
+tmp/
+
+# image files
+*.png
+*.jpg
+
+# Haskell
+# compilation
+*.errors
+*.hi
+# cabal
+dist/
+dist-newstyle/
+cabal.project
+cabal.project.local
+.ghc.environment.*
+# stack
+.stack-work/
+
+# Compiled files
+*.o
+*.so
+a.out
+
+# tar, backup, archive files
+*.bak
+*.tar.gz
+*.tar.bz2
+*.a

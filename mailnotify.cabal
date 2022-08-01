@@ -1,0 +1,39 @@
+cabal-version:  3.6
+name:           mailnotify
+version:        0.2.0
+synopsis:       Display notification about new mail           
+license:        BSD-3-Clause
+author:         Peter Dobsan
+maintainer:     pdobsan@gmail.com
+extra-source-files:
+
+common common
+  default-language: Haskell2010
+  build-depends:  base >=4.14,
+                  optparse-applicative,
+  ghc-options: -Wall
+
+library
+  import: common
+  hs-source-dirs: lib
+  other-modules:  Paths_mailnotify
+  autogen-modules: Paths_mailnotify
+  exposed-modules:
+    MailNotify.CommandLine,
+    MailNotify.Utilities,
+  build-depends:
+    bytestring,
+    libnotify,
+    purebred-email,
+    tailfile-hinotify,
+    text,
+    utf8-string,
+
+executable mailnotify
+  import: common
+  main-is: Main.hs
+  hs-source-dirs: app
+  build-depends:
+    mailnotify,
+
+  ghc-options: -threaded -rtsopts
