@@ -34,6 +34,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libnotify-dev
+          sudo apt-get install -y libgtk2.0-dev
           cabal build --only-dependencies
 
       - name: Build
