@@ -13,7 +13,7 @@ tmp/
 # cabal
 dist/
 dist-newstyle/
-cabal.project
+#cabal.project
 cabal.project.local
 .ghc.environment.*
 # stack
