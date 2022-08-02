@@ -1,2 +1,2 @@
 packages: ./*.cabal
-allow-newer: all
+-- allow-newer: all
