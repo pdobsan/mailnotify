@@ -54,7 +54,7 @@ jobs:
           EXE_NAME=mailnotify-$VERSION-${{ runner.os }}
           cp ~/.cabal/bin/mailnotify $EXE_NAME
           sha256sum $EXE_NAME > $EXE_NAME.sha256
-        #sed -e "s/^pkgver=.*$/pkgver=$VERSION/" aur/PKGBUILD >PKGBUILD
+          # sed -e "s/^pkgver=.*$/pkgver=$VERSION/" aur/PKGBUILD >PKGBUILD
           echo "package_version=$VERSION" >> $GITHUB_ENV
           ls -l
 
