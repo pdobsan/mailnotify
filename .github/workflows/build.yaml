@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ghc: ['8.10.7', '9.2.3', '9.2.4']
+        ghc: ['8.10.7', '9.2.4']
         cabal: [latest]
         os: [ubuntu-latest]
     name: Haskell GHC ${{ matrix.ghc }}
@@ -29,6 +29,12 @@ jobs:
         with:
           ghc-version: ${{ matrix.ghc }}
           cabal-version: ${{ matrix.cabal }}
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libnotify-dev
+          cabal build --only-dependencies
 
       - name: Build
         run: |
