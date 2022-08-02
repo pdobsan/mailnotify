@@ -30,13 +30,10 @@ jobs:
           ghc-version: ${{ matrix.ghc }}
           cabal-version: ${{ matrix.cabal }}
 
-      - name: Install dependencies
-        run: cabal build all --only-dependencies
-
       - name: Build
         run: |
           export PATH=~/.cabal/bin:$PATH
-          cabal build all
+          cabal build
           cabal install --install-method=copy --overwrite-policy=always --enable-executable-stripping
           mailnotify --version
           VERSION=$(grep '^version:' mailnotify.cabal | awk '{print $2}')
