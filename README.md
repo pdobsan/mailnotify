@@ -1,8 +1,7 @@
 
 # Mailnotify
 
-[![Build](https://github.com/pdobsan/mailnotify/actions/workflows/build.yaml/badge.svg)]
-(https://github.com/pdobsan/mailnotify/actions/workflows/build.yaml)
+[![Build](https://github.com/pdobsan/mailnotify/actions/workflows/build.yaml/badge.svg)](https://github.com/pdobsan/mailnotify/actions/workflows/build.yaml)
 
 The `mailnotify` daemon generates pop-up notifications on incoming email
 messages by monitoring a log file which records information about incoming
