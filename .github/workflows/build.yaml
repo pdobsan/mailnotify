@@ -64,21 +64,21 @@ jobs:
 
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/') && ${{ matrix.ghc }} == '9.2.4'
         with:
           body_path: Release.md
           files: mailnotify-*
 
-      - name: Release AUR package
-        uses: KSXGitHub/github-actions-deploy-aur@v2.3.0
-        if: startsWith(github.ref, 'refs/tags/')
-        with:
-          pkgname: mailnotify-bin
-          pkgbuild: PKGBUILD
-          assets: |
-            aur/.INSTALL
-          commit_username: ${{ secrets.AUR_USERNAME }}
-          commit_email: ${{ secrets.AUR_EMAIL }}
-          ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
-          commit_message: release mailnotify-bin ${{ env.package_version }}
+#      - name: Release AUR package
+#        uses: KSXGitHub/github-actions-deploy-aur@v2.3.0
+#        if: startsWith(github.ref, 'refs/tags/') && ${{ matrix.ghc }} == '9.2.4'
+#        with:
+#          pkgname: mailnotify-bin
+#          pkgbuild: PKGBUILD
+#          assets: |
+#            aur/.INSTALL
+#          commit_username: ${{ secrets.AUR_USERNAME }}
+#          commit_email: ${{ secrets.AUR_EMAIL }}
+#          ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
+#          commit_message: release mailnotify-bin ${{ env.package_version }}
 

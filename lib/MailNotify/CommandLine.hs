@@ -1,6 +1,8 @@
 module MailNotify.CommandLine
   ( Opts(..)
   , getOpts
+  , showVersion
+  , version
   )
 where
 
