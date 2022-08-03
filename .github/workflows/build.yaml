@@ -30,14 +30,26 @@ jobs:
           ghc-version: ${{ matrix.ghc }}
           cabal-version: ${{ matrix.cabal }}
 
-      - name: Install dependencies
+      - name: Install external dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y libnotify-dev
           sudo apt-get install -y libgtk2.0-dev
-          cabal build --only-dependencies
 
-      - name: Build
+      - name: Freeze
+        run: cabal freeze
+
+      - name: Restore cache
+        uses: actions/cache@v3
+        name: Cache ~/.cabal/store
+        with:
+          path: ${{ steps.setup-haskell-cabal.outputs.cabal-store }}
+          key: ${{ runner.os }}-${{ matrix.ghc }}-${{ hashFiles('cabal.project.freeze') }}
+
+      - name: Build dependencies
+        run: cabal build --only-dependencies
+
+      - name: Build & Install
         run: |
           export PATH=~/.cabal/bin:$PATH
           cabal build

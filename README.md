@@ -60,7 +60,11 @@ and put somewhere in your search path.
 To build `mailnotify` from source you need a Haskell development environment.
 Either your platform package system can provide this or you can use
 [ghcup](https://www.haskell.org/ghcup/). Once you have the `ghc` Haskell
-compiler and `cabal` etc. installed, follow the steps below:
+compiler and `cabal` etc. installed, follow the steps below.
+
+External dependencies are `libgtk2.0-dev` and `libnotify-dev` on Debian
+derivatives,  or `libnotify` and  `gtk2` on Arch derivatives. These must be
+installed before `cabal` is invoked.
 
 Clone this repository and invoke `cabal`:
 
@@ -70,8 +74,7 @@ Clone this repository and invoke `cabal`:
     cabal install
 
 `mailnotify` is known to build with `ghc 8.10.7`, `ghc 9.2.3` and `ghc
-9.2.4`. In the case of `9.2.4` you need to use the `--allow-newer` cabal
-flag.
+9.2.4`.
 
 ## License
 
