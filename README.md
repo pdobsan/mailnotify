@@ -76,8 +76,7 @@ Clone this repository and invoke `cabal`:
     cabal update
     cabal install
 
-`mailnotify` is known to build with `ghc 8.10.7`, `ghc 9.2.3` and `ghc
-9.2.4`.
+`mailnotify` is known to build with `ghc 8.10.7` and `ghc 9.2.4`.
 
 ## License
 

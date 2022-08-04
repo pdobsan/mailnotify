@@ -51,7 +51,7 @@ jobs:
           cabal install --install-method=copy --overwrite-policy=always --enable-executable-stripping
           mailnotify --version
           VERSION=$(grep '^version:' mailnotify.cabal | awk '{print $2}')
-          EXE_NAME=mailnotify-$VERSION-${{ runner.os }}
+          EXE_NAME=mailnotify-$VERSION-${{ runner.os }}-${{ runner.arch }}
           cp ~/.cabal/bin/mailnotify $EXE_NAME
           sha256sum $EXE_NAME > $EXE_NAME.sha256
           # sed -e "s/^pkgver=.*$/pkgver=$VERSION/" aur/PKGBUILD >PKGBUILD
