@@ -16,6 +16,8 @@ dist-newstyle/
 #cabal.project
 cabal.project.local
 .ghc.environment.*
+mailnotify-Linux-x86_64
+mailnotify-Linux-x86_64.sha256
 # stack
 .stack-work/
 

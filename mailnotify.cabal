@@ -1,6 +1,6 @@
 cabal-version:  3.6
 name:           mailnotify
-version:        0.2.1
+version:        0.2.2
 synopsis:       Display notification about new mail           
 license:        BSD-3-Clause
 author:         Peter Dobsan

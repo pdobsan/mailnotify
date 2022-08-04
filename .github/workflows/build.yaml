@@ -32,9 +32,6 @@ jobs:
           sudo apt-get install -y libnotify-dev
           sudo apt-get install -y libgtk2.0-dev
 
-      - name: Freeze
-        run: cabal freeze
-
       - name: Restore cabal store
         uses: actions/cache@v3
         with:
