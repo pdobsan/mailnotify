@@ -14,6 +14,7 @@ tmp/
 dist/
 dist-newstyle/
 #cabal.project
+cabal.project.freeze
 cabal.project.local
 .ghc.environment.*
 mailnotify-Linux-x86_64
