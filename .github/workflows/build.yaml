@@ -1,4 +1,4 @@
-name: Build
+name: Build Matrix
 
 on:
   workflow_dispatch:
@@ -32,6 +32,9 @@ jobs:
           sudo apt-get install -y libnotify-dev
           sudo apt-get install -y libgtk2.0-dev
 
+      - name: Freeze
+        run: cabal freeze
+
       - name: Restore cabal store
         uses: actions/cache@v3
         with:
@@ -43,15 +46,6 @@ jobs:
 
       - name: Build & Install
         run: |
-          export PATH=~/.cabal/bin:$PATH
           cabal build
           cabal install --install-method=copy --overwrite-policy=always --enable-executable-stripping
-          mailnotify --version
-          VERSION=$(grep '^version:' mailnotify.cabal | awk '{print $2}')
-          EXE_NAME=mailnotify-$VERSION-${{ runner.os }}-${{ runner.arch }}
-          cp ~/.cabal/bin/mailnotify $EXE_NAME
-          sha256sum $EXE_NAME > $EXE_NAME.sha256
-          # sed -e "s/^pkgver=.*$/pkgver=$VERSION/" aur/PKGBUILD >PKGBUILD
-          echo "package_version=$VERSION" >> $GITHUB_ENV
-          ls -l
 
