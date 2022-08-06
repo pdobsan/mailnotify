@@ -10,7 +10,7 @@ arch=(x86_64)
 url="https://github.com/pdobsan/${_pkgname}"
 license=('BSD')
 groups=()
-depends=(libnotify, gtk2)
+depends=(libnotify gtk2)
 makedepends=()
 optdepends=('dunst: Customizable and lightweight notification-daemon'
            )
