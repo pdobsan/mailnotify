@@ -11,7 +11,14 @@ help:
 	@echo "freeze  - set ghc $(GHC) and generate cabal.project.freeze"
 	@echo "build   - build $(PROGX)"
 	@echo "release - create a release of version $(VERSION)"
+	@echo "aur     - publish $(PROG)-bin $(VERSION) on AUR"
 	@echo
+
+git-status:
+	@echo checking git status ...
+	git status -s
+	@[[ -z "$$(git status -s)" ]]
+	#git diff -quiet
 
 release: build
 	git push
@@ -24,12 +31,19 @@ freeze:
 	ghcup set ghc $(GHC)
 	cabal freeze
 
-build: $(PROGX)
+build: git-status $(PROGX)
 $(PROGX): cabal.project.freeze
 	cabal build
 	cabal install
 	cp -a ~/.cabal/bin/$(PROG) $(PROGX)
 	sha256sum $(PROGX) > $(PROGX).sha256
+
+aur/PKGBUILD: $(PROG).cabal
+	sed -i -e "s/^pkgver=.*$$/pkgver=$(VERSION)/" aur/PKGBUILD
+
+.PHONY: aur
+aur: git-status aur/PKGBUILD
+	gh workflow run aur.yaml
 
 clean:
 	rm -f $(PROGX) $(PROGX).sha256
